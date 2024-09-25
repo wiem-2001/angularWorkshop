@@ -1,1 +1,7 @@
 @import url("node_modules/bootstrap/dist/css/bootstrap.min.css");
+
+.highlight {
+  background-color: yellow;  /* Or any color to check if it's visible */
+  transition: background-color 0.3s ease;
+}
+

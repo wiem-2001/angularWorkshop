@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { HomeComponent } from './home/home.component';
+import { HighlighterDirective } from './highlighter.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     FooterComponent,
     ListCategoriesComponent,
-    HomeComponent
+    HomeComponent,
+    HighlighterDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

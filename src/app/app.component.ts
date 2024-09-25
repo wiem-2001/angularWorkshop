@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularWorkshop';
+  t=10;
+  list = ["a","b","c","d","e","f","g","h"]
 }
