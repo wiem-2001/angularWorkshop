@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let elt of categories">
-      <div *ngIf="elt.title.includes(titre)" appHighlighter>
+    <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let elt of categories  | searchFilter:titre" >
+      <div  appHighlighter>
         <img src="{{elt.image}}" alt="Grand électroménager" class="img-fluid h-50 w-75" (click)="showDesc(elt.description)">
         <h3>{{elt.title | uppercase}}</h3>
         <button class="btn btn-primary"  *ngIf="elt.available">Voir produits</button>
         <p *ngIf="!elt.available" style="color:red">Categorie non disponible</p>
       </div>
     </div>
+
   </div>
   <input type="text" [(ngModel)]="titre" placeholder="Rechercher une catégorie...">
 
