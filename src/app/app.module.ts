@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { HighlighterDirective } from './highlighter.directive';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SearchFilterPipe } from './search-filter.pipe';
     ListCategoriesComponent,
     HomeComponent,
     HighlighterDirective,
-    SearchFilterPipe
+    SearchFilterPipe,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
