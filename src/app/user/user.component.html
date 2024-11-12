@@ -1,0 +1,69 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="container mt-4">
+  <h2>User Registration Form</h2>
+
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input id="firstName" formControlName="firstName" class="form-control" required />
+    <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="text-danger">
+      <small>First Name is required.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" formControlName="lastName" class="form-control" required />
+    <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched" class="text-danger">
+      <small>Last Name is required.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" class="form-control" required />
+    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="text-danger">
+      <small>Email is required and must be valid.</small>
+    </div>
+  </div>
+
+  <fieldset formGroupName="address" class="border p-3 mb-4">
+    <legend class="w-auto">Address</legend>
+    <div class="form-group">
+      <label for="streetNumber">Street Number:</label>
+      <input id="streetNumber" formControlName="streetNumber" class="form-control" required />
+      <div *ngIf="userForm.get('address.streetNumber')?.invalid && userForm.get('address.streetNumber')?.touched" class="text-danger">
+        <small>Street Number is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input id="city" formControlName="city" class="form-control" required />
+      <div *ngIf="userForm.get('address.city')?.invalid && userForm.get('address.city')?.touched" class="text-danger">
+        <small>City is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="postalCode">Postal Code:</label>
+      <input id="postalCode" formControlName="postalCode" class="form-control" required />
+      <div *ngIf="userForm.get('address.postalCode')?.invalid && userForm.get('address.postalCode')?.touched" class="text-danger">
+        <small>Postal Code is required and must be a 5-digit number.</small>
+      </div>
+    </div>
+  </fieldset>
+
+  <div formArrayName="skills" class="mb-4">
+    <h3>Skills</h3>
+    <div *ngFor="let skill of skills.controls; let i = index" [formGroupName]="i" class="form-group">
+      <label for="skill">Skill:</label>
+      <input id="skill" formControlName="skill" class="form-control" required />
+      <button type="button" class="btn btn-danger mt-2" (click)="removeSkill(i)">Remove</button>
+      <div *ngIf="skill.get('skill')?.invalid && skill.get('skill')?.touched" class="text-danger">
+        <small>Skill is required.</small>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="addSkill()">Add Skill</button>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Submit</button>
+</form>

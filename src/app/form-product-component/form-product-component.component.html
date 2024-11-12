@@ -1,0 +1,53 @@
+<form [formGroup]="product_data" (ngSubmit)="onSave()" class="container mt-4">
+  <div class="mb-3">
+    <label for="name" class="form-label">Titre :</label>
+    <input id="name" formControlName="name" class="form-control" />
+    <div *ngIf="product_data.get('name')?.invalid && (product_data.get('name')?.touched || product_data.get('name')?.dirty)" class="text-danger">
+      <small *ngIf="product_data.get('name')?.errors?.['required']">Le titre est requis.</small>
+      <small *ngIf="product_data.get('name')?.errors?.['minlength']">Le titre doit contenir au moins 5 caractères.</small>
+      <small *ngIf="product_data.get('name')?.errors?.['pattern']">Le titre ne peut contenir que des lettres.</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="image" class="form-label">Image :</label>
+    <input id="image" formControlName="image" class="form-control" />
+    <div *ngIf="product_data.get('image')?.invalid && (product_data.get('image')?.touched || product_data.get('image')?.dirty)" class="text-danger">
+      <small>Le champ image est requis.</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description :</label>
+    <textarea id="description" formControlName="description" class="form-control"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="price" class="form-label">Prix :</label>
+    <input id="price" formControlName="price" class="form-control" />
+    <div *ngIf="product_data.get('price')?.invalid && (product_data.get('price')?.touched || product_data.get('price')?.dirty)" class="text-danger">
+      <small *ngIf="product_data.get('price')?.errors?.['required']">Le prix est requis.</small>
+      <small *ngIf="product_data.get('price')?.errors?.['pattern']">Le prix doit être un nombre valide.</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="brand" class="form-label">Marque :</label>
+    <input id="brand" formControlName="brand" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="promotion" class="form-label">Promotion :</label>
+    <input id="promotion" formControlName="promotion" class="form-control" />
+    <div *ngIf="product_data.get('promotion')?.invalid && (product_data.get('promotion')?.touched || product_data.get('promotion')?.dirty)" class="text-danger">
+      <small>La promotion doit être un nombre inférieur ou égal à 100.</small>
+    </div>
+  </div>
+
+  <div class="mb-3 form-check">
+    <input type="checkbox" id="available" formControlName="available" class="form-check-input" />
+    <label for="available" class="form-check-label">Disponible</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="product_data.invalid">Ajouter Produit</button>
+</form>
